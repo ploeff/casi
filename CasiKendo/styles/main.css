@@ -35,11 +35,11 @@ body, html {
 }
 
 .logo {
-    background-image: url(../styles/images/logo.png);
+    background-image: url(../styles/images/CASI1.png);
     background-repeat: no-repeat;
-    width: 85px;
-    height: 60px;
-    margin: 40px auto;
+    width: 169px;
+    height: 65px;
+    margin: 20px auto;
 }
 
 /* BUTTON STYLES*/

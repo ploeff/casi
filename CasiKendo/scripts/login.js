@@ -8,45 +8,31 @@
         password: "",
 
         onLogin: function () {
+            debugger;
             var that = this,
                 username = that.get("username").trim(),
                 password = that.get("password").trim();
 
-            if (username === "" || password === "") {
-                navigator.notification.alert("Both fields are required!",
-                    function () { }, "Login failed", 'OK');
-
+            if (!validateLogin(username, password)) {
+                navigator.notification.alert("Brugernavn eller password er forkert.", function () { }, "Login fejl", 'OK');
                 return;
             }
-
             that.set("isLoggedIn", true);
+            
+            app.application.navigate('#home');
         },
-
-        onLogout: function () {
-            var that = this;
-
-            that.clearForm();
-            that.set("isLoggedIn", false);
-        },
-
-        clearForm: function () {
-            var that = this;
-
-            that.set("username", "");
-            that.set("password", "");
-        },
-
-        checkEnter: function (e) {
-            var that = this;
-
-            if (e.keyCode == 13) {
-                $(e.target).blur();
-                that.onLogin();
-            }
-        }
     });
 
     app.loginService = {
         viewModel: new LoginViewModel()
     };
 })(window);
+
+function validateLogin(uid, pid){
+    if(uid === "" || pid === ""){
+        return false;
+    }
+    else{
+        return true;
+    }
+}
